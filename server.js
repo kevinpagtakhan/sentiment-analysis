@@ -20,19 +20,6 @@ app.use(express.static('public'));
 
 app.use('/api/posts', postRoutes);
 
-app.post('/api/sentiment', function(req, res){
-  textapi.sentiment({
-    text: req.body.text,
-    mode: req.body.mode
-  }, function(err, response) {
-    if(err) {
-      res.json(err)
-    } else {
-      res.json(response);
-    }
-  });
-});
-
 app.listen(3000, function(err){
   console.log(err || "Listening on port 3000");
 })
