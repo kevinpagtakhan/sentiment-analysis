@@ -2,6 +2,12 @@ var express = require('express');
 var router = express.Router();
 var Post = require('../../models/Post')
 
+var AYLIENTextAPI = require('aylien_textapi');
+var textapi = new AYLIENTextAPI({
+  application_id: process.env.TA_APP_ID,
+  application_key: process.env.TA_KEY
+});
+
 router.get('/', function(req, res){
   Post.find({}, function(err, post){
     res.json(err || post);
