@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Sentiment Analysis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.4/semantic.min.css">
+    <script src="js/angular.js" charset="utf-8"></script>
+    <script src="js/app.js" charset="utf-8"></script>
+
+    <link rel="stylesheet" href="css/styles.css">
+  </head>
+  <body ng-app="sentimentAnalysis" ng-controller="PostController as pc">
+    <div class="ui container">
+      <div class="row">
+
+        <div class="ui grid">
+          <div class="two wide column"></div>
+          <div class="twelve wide column ui segments">
+            <h1>Post Analysis</h1>
+
+            <div class="ui form">
+              <div class="field">
+                <textarea ng-model="pc.newPost.text"></textarea>
+              </div>
+              <button class="ui button" type="submit" ng-click="pc.submitPost()">Submit</button>
+            </div>
+
+            <div class="ui segments">
+              <div class="ui segment" ng-repeat="post in pc.posts">
+
+                <p>{{ post.text }}</p>
+                <p><small>{{ post.createdAt | date}}</small></p>
+                <i ng-if="post.polarity=='positive'" class="check circle outline icon font-green"></i>
+                <i ng-if="post.polarity=='neutral'" class="check circle outline icon font-gray"></i>
+                <i ng-if="post.polarity=='negative'" class="remove circle outline icon font-red"></i>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>
