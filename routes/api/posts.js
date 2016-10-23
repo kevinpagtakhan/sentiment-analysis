@@ -9,7 +9,7 @@ var textapi = new AYLIENTextAPI({
 });
 
 router.get('/', function(req, res){
-  Post.find({}, function(err, post){
+  Post.find({}).sort({createdAt: -1}).exec(function(err, post){
     res.json(err || post);
   });
 });
